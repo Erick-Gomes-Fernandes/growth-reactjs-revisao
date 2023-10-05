@@ -6,15 +6,27 @@ export default function HomePage () {
   const handleLabelClick = () => {
     console.log("HANDLE LABEL CLICK")
   }
+
+  const handleSubmitForm = () => {
+    event.preventDefault()
+    console.log("HANDLE SUBMIT FORM")
+  }
+
+  let email = ""
+  const handleChangeInput = (event) => {
+    email = event.target.value
+  }
+
   return (
     <>
       <Title onClick={handleLabelClick}>Formulário de Login</Title>
       <label onClick={handleLabelClick}>Voltar a página...</label>
-      <form>
-        <Input type="email" placeholder="Digite seu e-mail" />
-        <Input type="password" placeholder="Digite sua senha" />
-        <Button onClick={handleLabelClick}>Botão</Button>
+      <form onSubmit={handleSubmitForm}>
+        <Input type="text" placeholder="Digite seu e-mail" onChange={handleChangeInput} />
+        <p>O e-mail digitado foi: {email}</p>
+        <Button type="submit">Botão dentro do form</Button>
       </form>
+      <Button onClick={handleLabelClick}>Botão fora do form</Button>
       <label>LABEL TESTE</label>
       <button>Button</button>
     </>
